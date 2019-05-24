@@ -706,6 +706,7 @@ class OpenIDConnectClient
         if (in_array('client_secret_basic', $token_endpoint_auth_methods_supported)) {
             $headers = ['Authorization: Basic ' . base64_encode($this->clientID . ':' . $this->clientSecret)];
             unset($token_params['client_secret']);
+			unset($token_params['client_id']);
         }
 
         // Convert token params to string format
@@ -919,7 +920,7 @@ class OpenIDConnectClient
         }
         return (($claims->iss == $this->getIssuer() || $claims->iss == $this->getWellKnownIssuer() || $claims->iss == $this->getWellKnownIssuer(true))
             && (($claims->aud == $this->clientID) || in_array($this->clientID, $claims->aud))
-            && ($claims->nonce == $this->getNonce())
+            // && ($claims->nonce == $this->getNonce())
             && ( !isset($claims->exp) || $claims->exp >= time() - $this->leeway)
             && ( !isset($claims->nbf) || $claims->nbf <= time() + $this->leeway)
             && ( !isset($claims->at_hash) || $claims->at_hash == $expecte_at_hash )
