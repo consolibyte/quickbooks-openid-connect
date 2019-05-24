@@ -1,6 +1,6 @@
 {
-    "name": "jumbojett/openid-connect-php",
-    "description": "Bare-bones OpenID Connect client",
+    "name": "consolibyte/quickbooks-openid-connect",
+    "description": "Intuit QuickBooksd OpenID Connect client",
     "license": "Apache-2.0",
     "require": {
         "php": ">=5.4",
